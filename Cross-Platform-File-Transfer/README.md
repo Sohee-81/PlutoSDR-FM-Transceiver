@@ -59,9 +59,11 @@ By forcing the runtime loop to sleep for exactly 95% of the block's physical bro
 3.2. WSL2 Virtual Network Isolation (TimeoutError / No Device Found)Symptom: The Windows-guest WSL2 terminal failed to discover the physical PlutoSDR over USB, raising OSError: [Errno 110] Connection timed out.  Root Cause: Core virtualization layers isolate the underlying Windows host hardware buses from the virtualized Ubuntu guest kernel interface. NAT configurations enforced by recent usbipd-win update engines altered local network interface routing, causing the automated scanning backends (usb:0.0.0) to drop device discovery across the container boundary[cite: 1].  Engineering Solution: Hardcoded explicit IP network sockets within the hardware instantiation handle:  Pythonsdr = adi.Pluto("ip:192.168.2.1")
 
 
-By targeting the fixed TCP/IP gateway bridge layout directly, the script successfully initiated safe socket mapping over the usbipd virtualization tunnel, clearing the guest OS discovery constraint completely.  📐 4. End-to-End System ArchitectureThe conceptual diagram below illustrates the cross-platform signal flow, tracking the multimedia baseband conversions down through the virtualized network interface layer into physical electromagnetic waves[cite: 1, 2]:
+By targeting the fixed TCP/IP gateway bridge layout directly, the script successfully initiated safe socket mapping over the usbipd virtualization tunnel, clearing the guest OS discovery constraint completely.  
 
-Plaintext  +-----------------------------------+             +-----------------------------------+
+### 4. End-to-End System ArchitectureThe conceptual diagram below illustrates the cross-platform signal flow, tracking the multimedia baseband conversions down through the virtualized network interface layer into physical electromagnetic waves[cite: 1, 2]:
+
+
   |   [Tx Node: Native Linux Host]    |             |    [Rx Node: Windows WSL2 Guest]  |
   |  - Audio Source: music.wav        |             |  - Host Sound Engine: Playback    |
   |  - 12x Interpolation (529.2 kHz)  |             |  - 12x Decimation Filter Layer    |
@@ -77,7 +79,7 @@ Plaintext  +-----------------------------------+             +------------------
   +-----------------------------------+     Air     +-----------------------------------+
 
 
-5. Low-Level Environment Diagnostics & Hardware Verification
+### 5. Low-Level Environment Diagnostics & Hardware Verification
 5.1. Isolated Environment InitializationTo isolate hardware drivers and dependency packages from system-wide libraries, run the following workspace initialization steps inside the host terminal[cite: 1]:Bash# Workspace
 
 # Workspace setup and package installation sequence
@@ -88,8 +90,8 @@ python3 -m venv sdr_env
 source sdr_env/bin/activate
 pip install pyadi-iio numpy scipy sounddevice
 
-5.2. Pre-Execution Network Ping CheckBefore triggering python abstraction layers, run an ICMP echo verification test to confirm low-latency hardware routing transparency over the default interface gateway[cite: 1]:Bashping -c 4 192.168.2.1
-Expected Diagnostic Output Profile:PlaintextPING 192.168.2.1 (192.168.2.1) 56(84) bytes of data.
+5.2. Pre-Execution Network Ping CheckBefore triggering python abstraction layers, run an ICMP echo verification test to confirm low-latency hardware routing transparency over the default interface gateway[cite: 1]:
+PING 192.168.2.1 (192.168.2.1) 56(84) bytes of data.
 64 bytes from 192.168.2.1: icmp_seq=1 ttl=64 time=0.499 ms
 64 bytes from 192.168.2.1: icmp_seq=2 ttl=64 time=0.231 ms
 64 bytes from 192.168.2.1: icmp_seq=3 ttl=64 time=0.229 ms
