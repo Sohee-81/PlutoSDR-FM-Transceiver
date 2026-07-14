@@ -8,7 +8,7 @@ This repository contains Python scripts for software-defined radio (SDR) communi
 
 To maintain a controlled laboratory environment and prevent over-the-air interference with licensed spectrums, all experiments were conducted via a **conducted RF link** using coaxial cables and an RF splitter, bypassing antennas.
 
-```text
+
 [ TX Laptop ] ──> [ Tx PlutoSDR ] ──(Coaxial Cable)──> [ RF Splitter / Divider ]
                                                               │
                                      ┌────────────────────────┴────────────────────────┐
