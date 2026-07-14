@@ -118,7 +118,7 @@ The receiver script (`rx_wsl.py`) was profiled to analyze the processing latency
 #### A. Complex Conjugate FM Demodulation
 Rather than calculating computationally expensive trigonometric arc-tangent operations on individual samples, the demodulation core executes a vector cross-multiplication of the current complex IQ sample with the complex conjugate of the prior sample[cite: 1, 2]:
 
-$$y[n] = \arg \left\{ x[n] \cdot x^*[n-1] \right\}[cite: 1, 2]$$
+$$y[n] = \arg (x[n] \cdot x^*[n-1])[cite: 1, 2]$$
 
 Where:
 * $x[n]$ is the current complex IQ sample fetched from the PlutoSDR buffer[cite: 1, 2].
