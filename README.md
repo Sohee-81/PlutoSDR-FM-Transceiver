@@ -10,11 +10,11 @@ To maintain a controlled laboratory environment and prevent over-the-air interfe
 
 \`\`\`
 [ TX Laptop ] ──> [ Tx PlutoSDR ] ──(Coaxial Cable)──> [ RF Splitter / Divider ]
-                                                              │
-                                     ┌────────────────────────┴────────────────────────┐
-                                     ▼                                                 ▼
-                         [ Spectrum Analyzer ]                                   [ Rx PlutoSDR ] ──> [ RX Laptop ]
-                       (Real-time Signal Monitoring)                              (Signal Demodulation)
+│
+┌────────────────────────┴────────────────────────┐
+▼                                                 ▼
+[ Spectrum Analyzer ]                                   [ Rx PlutoSDR ] ──> [ RX Laptop ]
+(Real-time Signal Monitoring)                              (Signal Demodulation)
 \`\`\`
 
 * **Center Frequency ($f_c$):** 350.0 MHz
