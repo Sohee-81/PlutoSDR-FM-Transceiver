@@ -8,14 +8,13 @@ This repository contains Python scripts for software-defined radio (SDR) communi
 
 To maintain a controlled laboratory environment and prevent over-the-air interference with licensed spectrums, all experiments were conducted via a **conducted RF link** using coaxial cables and an RF splitter, bypassing antennas.
 
-\`\`\`
+
 [ TX Laptop ] ──> [ Tx PlutoSDR ] ──(Coaxial Cable)──> [ RF Splitter / Divider ]
                                                               │
                                      ┌────────────────────────┴────────────────────────┐
                                      ▼                                                 ▼
                          [ Spectrum Analyzer ]                                   [ Rx PlutoSDR ] ──> [ RX Laptop ]
                        (Real-time Signal Monitoring)                              (Signal Demodulation)
-\`\`\`
 
 * **Center Frequency ($f_c$):** 350.0 MHz
 * **SDR Sample Rate ($f_s$):** 1.0 MHz
