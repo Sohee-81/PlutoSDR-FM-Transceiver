@@ -39,7 +39,7 @@ https://github.com/user-attachments/assets/4f23d035-8e97-4d05-966f-48b94cecf33d
 * `demo_01_sine_tone_verification.mp4`: Continuous tone link validation video.
 * `demo_02_realtime_audio_streaming.mp4`: Multimedia streaming confirmation video.
 
-## 🔍 3. Troubleshooting & Virtualization Root Cause Analysis
+## 3. Troubleshooting & Virtualization Root Cause Analysis
 
 During the initial development framework, the transceiver link encountered critical system failures due to hardware timing and abstraction limitations in virtualized sandboxes. Below are the engineering diagnostics and solutions implemented to achieve a stable production state:
 
@@ -80,7 +80,7 @@ Plaintext  +-----------------------------------+             +------------------
 5. Low-Level Environment Diagnostics & Hardware Verification
 5.1. Isolated Environment InitializationTo isolate hardware drivers and dependency packages from system-wide libraries, run the following workspace initialization steps inside the host terminal[cite: 1]:Bash# Workspace
 
-setup and package installation sequence
+# Workspace setup and package installation sequence
 mkdir -p ~/pluto_V2
 cd ~/pluto_V2
 sudo apt update && sudo apt install python3-venv python3-full -y
@@ -98,4 +98,4 @@ Expected Diagnostic Output Profile:PlaintextPING 192.168.2.1 (192.168.2.1) 56(84
 --- 192.168.2.1 ping statistics ---
 4 packets transmitted, 4 received, 0% packet loss, time 3064ms
 rtt min/avg/max/mdev = 0.229/0.300/0.499/0.114 ms
-Achieving an average round-trip latency ($\text{rtt}_{\text{avg}}$) of $0.300\text{ ms}$ with 0% packet drop rates verifies physical USB data-link integrity before runtime executions[cite: 1].
+
